@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_wishlist_wishlists",
+  "info": {
+    "displayName": "wishlist",
+    "icon": "heart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}

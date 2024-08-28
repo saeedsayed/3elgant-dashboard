@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_review_reviews",
+  "info": {
+    "displayName": "reviews"
+  },
+  "options": {},
+  "attributes": {
+    "accounts": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::accounte.accounte"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "rate": {
+      "type": "integer",
+      "required": true,
+      "max": 5,
+      "min": 1
+    }
+  }
+}

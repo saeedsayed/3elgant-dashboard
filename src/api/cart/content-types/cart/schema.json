@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carts",
+  "info": {
+    "singularName": "cart",
+    "pluralName": "carts",
+    "displayName": "cart",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::accounte.accounte",
+      "inversedBy": "cart"
+    },
+    "product": {
+      "displayName": "products",
+      "type": "component",
+      "repeatable": true,
+      "component": "product.products"
+    }
+  }
+}

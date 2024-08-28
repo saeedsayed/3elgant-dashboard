@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_product_products",
+  "info": {
+    "displayName": "products",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "count": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    }
+  }
+}
