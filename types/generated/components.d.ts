@@ -1,5 +1,21 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface WishlistWishlist extends Schema.Component {
+  collectionName: 'components_wishlist_wishlists';
+  info: {
+    displayName: 'wishlist';
+    icon: 'heart';
+    description: '';
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'wishlist.wishlist',
+      'oneToMany',
+      'api::product.product'
+    >;
+  };
+}
+
 export interface ReviewReviews extends Schema.Component {
   collectionName: 'components_review_reviews';
   info: {
@@ -21,22 +37,6 @@ export interface ReviewReviews extends Schema.Component {
         },
         number
       >;
-  };
-}
-
-export interface WishlistWishlist extends Schema.Component {
-  collectionName: 'components_wishlist_wishlists';
-  info: {
-    displayName: 'wishlist';
-    icon: 'heart';
-    description: '';
-  };
-  attributes: {
-    products: Attribute.Relation<
-      'wishlist.wishlist',
-      'oneToMany',
-      'api::product.product'
-    >;
   };
 }
 
@@ -82,8 +82,8 @@ export interface ColorColors extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'review.reviews': ReviewReviews;
       'wishlist.wishlist': WishlistWishlist;
+      'review.reviews': ReviewReviews;
       'product.products': ProductProducts;
       'color.colors': ColorColors;
     }
