@@ -1,5 +1,29 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ReviewReviews extends Schema.Component {
+  collectionName: 'components_review_reviews';
+  info: {
+    displayName: 'reviews';
+  };
+  attributes: {
+    accounts: Attribute.Relation<
+      'review.reviews',
+      'oneToOne',
+      'api::accounte.accounte'
+    >;
+    comment: Attribute.Text;
+    rate: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      >;
+  };
+}
+
 export interface WishlistWishlist extends Schema.Component {
   collectionName: 'components_wishlist_wishlists';
   info: {
@@ -41,30 +65,6 @@ export interface ProductProducts extends Schema.Component {
   };
 }
 
-export interface ReviewReviews extends Schema.Component {
-  collectionName: 'components_review_reviews';
-  info: {
-    displayName: 'reviews';
-  };
-  attributes: {
-    accounts: Attribute.Relation<
-      'review.reviews',
-      'oneToOne',
-      'api::accounte.accounte'
-    >;
-    comment: Attribute.Text;
-    rate: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 5;
-        },
-        number
-      >;
-  };
-}
-
 export interface ColorColors extends Schema.Component {
   collectionName: 'components_color_colors';
   info: {
@@ -82,9 +82,9 @@ export interface ColorColors extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'review.reviews': ReviewReviews;
       'wishlist.wishlist': WishlistWishlist;
       'product.products': ProductProducts;
-      'review.reviews': ReviewReviews;
       'color.colors': ColorColors;
     }
   }
