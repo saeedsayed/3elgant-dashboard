@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contactInformation": {
+      "displayName": "contact information",
+      "type": "component",
+      "repeatable": false,
+      "component": "contact-info.contact-information"
+    },
+    "shippingAddress": {
+      "displayName": "shipping-address",
+      "type": "component",
+      "repeatable": false,
+      "component": "shipping-address.shipping-address"
+    },
+    "shipping": {
+      "type": "string"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "account": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::accounte.accounte",
+      "inversedBy": "orders"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.products"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Placed",
+        "Confirmed",
+        "Shipped",
+        "Delivered",
+        "Attempted delivery",
+        "Cancelled",
+        "Refunded"
+      ]
+    }
+  }
+}

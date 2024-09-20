@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "username": {
+    "userName": {
       "type": "string",
       "required": true,
       "unique": true
@@ -22,19 +22,16 @@
       "required": true,
       "unique": true
     },
-    "firstname": {
+    "firstName": {
       "type": "string",
       "required": true
     },
-    "lastname": {
+    "lastName": {
       "type": "string"
     },
     "avatar": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dcnwzavtg/image/upload/v1723498978/person_9b81d652d3.png"
-    },
-    "password": {
-      "type": "password"
+      "default": "https://res.cloudinary.com/dcnwzavtg/image/upload/v1726698043/person_4e52f418dc.png"
     },
     "wishlist": {
       "type": "relation",
@@ -47,6 +44,15 @@
       "relation": "oneToOne",
       "target": "api::cart.cart",
       "mappedBy": "account"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "account"
+    },
+    "hashPassword": {
+      "type": "string"
     }
   }
 }

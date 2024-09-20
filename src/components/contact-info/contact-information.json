@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_contact_info_contact_informations",
+  "info": {
+    "displayName": "contact information",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "regex": "^[0-9]+$"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

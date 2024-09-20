@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipping_methods",
+  "info": {
+    "singularName": "shipping-method",
+    "pluralName": "shipping-methods",
+    "displayName": "shippingMethod"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "methodName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "increases": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "typeIncrease": {
+      "type": "enumeration",
+      "enum": [
+        "percentage",
+        "increases"
+      ],
+      "required": true
+    }
+  }
+}

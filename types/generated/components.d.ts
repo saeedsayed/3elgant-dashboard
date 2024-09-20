@@ -16,28 +16,23 @@ export interface WishlistWishlist extends Schema.Component {
   };
 }
 
-export interface ProductProducts extends Schema.Component {
-  collectionName: 'components_product_products';
+export interface ShippingAddressShippingAddress extends Schema.Component {
+  collectionName: 'components_shipping_address_shipping_addresses';
   info: {
-    displayName: 'products';
-    icon: 'cube';
+    displayName: 'shipping-address';
     description: '';
   };
   attributes: {
-    product: Attribute.Relation<
-      'product.products',
-      'oneToOne',
-      'api::product.product'
-    >;
-    color: Attribute.String & Attribute.Required;
-    count: Attribute.Integer &
+    street: Attribute.String;
+    country: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.String;
+    ZIPCode: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 10;
+      }>;
   };
 }
 
@@ -65,6 +60,45 @@ export interface ReviewReviews extends Schema.Component {
   };
 }
 
+export interface ProductProducts extends Schema.Component {
+  collectionName: 'components_product_products';
+  info: {
+    displayName: 'products';
+    icon: 'cube';
+    description: '';
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'product.products',
+      'oneToOne',
+      'api::product.product'
+    >;
+    color: Attribute.String & Attribute.Required;
+    count: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface ContactInfoContactInformation extends Schema.Component {
+  collectionName: 'components_contact_info_contact_informations';
+  info: {
+    displayName: 'contact information';
+    description: '';
+  };
+  attributes: {
+    firstName: Attribute.String & Attribute.Required;
+    lastName: Attribute.String;
+    phoneNumber: Attribute.String;
+    email: Attribute.Email;
+  };
+}
+
 export interface ColorColors extends Schema.Component {
   collectionName: 'components_color_colors';
   info: {
@@ -79,13 +113,28 @@ export interface ColorColors extends Schema.Component {
   };
 }
 
+export interface ArticleSectionArticleSection extends Schema.Component {
+  collectionName: 'components_article_section_article_sections';
+  info: {
+    displayName: 'articleSection';
+  };
+  attributes: {
+    sectionTitle: Attribute.String & Attribute.Required;
+    body: Attribute.Blocks & Attribute.Required;
+    images: Attribute.Media<'images' | 'videos', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'wishlist.wishlist': WishlistWishlist;
-      'product.products': ProductProducts;
+      'shipping-address.shipping-address': ShippingAddressShippingAddress;
       'review.reviews': ReviewReviews;
+      'product.products': ProductProducts;
+      'contact-info.contact-information': ContactInfoContactInformation;
       'color.colors': ColorColors;
+      'article-section.article-section': ArticleSectionArticleSection;
     }
   }
 }

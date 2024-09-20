@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shipping_address_shipping_addresses",
+  "info": {
+    "displayName": "shipping-address",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "ZIPCode": {
+      "type": "string",
+      "regex": "^[0-9]{5}((?:[-\\s][0-9]{4})|(?:[-\\s][0-9]{3}))?$",
+      "required": true,
+      "maxLength": 10,
+      "minLength": 5
+    }
+  }
+}
